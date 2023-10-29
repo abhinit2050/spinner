@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <Spinner />
+      <h1>This is just to test VS version control</h1>
     </div>
   );
 }
