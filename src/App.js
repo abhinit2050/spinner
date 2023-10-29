@@ -1,12 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import Spinner from './components/spinner';
+import Spinner from './components/Spinner';
 
 function App() {
   return (
     <div className="App">
       <Spinner />
-      <h1>This is just to test VS version control</h1>
     </div>
   );
 }
