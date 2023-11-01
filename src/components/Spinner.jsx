@@ -5,7 +5,7 @@ import './spin.css';
 export default function Spinner() {
 
     const canvasRef = useRef(null);
-    const n=4;
+    const n=8;
     const incrementalAngle = 2*Math.PI/n
 
     useEffect(()=>{
@@ -16,8 +16,8 @@ export default function Spinner() {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    canvas.width = screenWidth * 0.40; // 80% of screen width
-    canvas.height = screenHeight * 0.7; // 80% of screen height
+    canvas.width = screenWidth * 0.80; 
+    canvas.height = screenHeight * 0.8; 
 
     // Draw a circle
     const centerX = canvas.width / 2;
@@ -31,8 +31,8 @@ export default function Spinner() {
 
 
      //draw the required number of arcs
-     let colors = ['#E44236','#3498DB','#2ecc72','#EEC213','#7B8788','#EAF0F1','#B83227','#2475B0','#26ae60','#F5C469','#99AAAB','#E74292'];
-
+     let colors = ['#E44236','#3498DB','#2ecc72','#EEC213','#7B8788','#74B9FF','#B83227','#2475B0','#26ae60','#F5C469','#99AAAB','#E74292'];
+      let labelOptions = ["India","Australia","New Zealand","South Africa","Afghanistan","Pakistan","Sri Lanka","England"];
      let i=0;
 
      for(i=0;i<n;i++){
@@ -43,21 +43,26 @@ export default function Spinner() {
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, start_angle, end_angle);
         ctx.fill();
-     }
 
-     // Calculate middle of the arc
-     console.log(Math.sin(7*Math.PI / 4));
-     const arcMiddleX = centerX-(radius * Math.sin(7*Math.PI / 4))/2;
-     const arcMiddleY = centerY-(radius * Math.cos(7*Math.PI / 4))/2;
-       
+        drawLabel(start_angle, end_angle, labelOptions[i]);
+     }    
 
-     // Add label 'India'
-     ctx.fillStyle = 'white';
-     ctx.font = 'bold 24px sans-serif';
-    //  ctx.textAlign = 'left';
-     ctx.fillText('INDIA', arcMiddleX, arcMiddleY);
+     function drawLabel(start_angle, end_angle, color){
+      //label settings
+      var angle = (start_angle + end_angle) / 2;
+      var labelX = centerX + (radius/2 + 20);
+      // var labelY = centerY + Math.sin(angle) * (radius + 20);
+      var labelY=0;
+
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillText(color, labelX, labelY);
+      ctx.strokeStyle = 'black';
+
+    }
 
   }, []);
+
+ 
 
   return (
     <div>
