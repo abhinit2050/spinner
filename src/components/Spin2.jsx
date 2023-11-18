@@ -42,7 +42,7 @@ var Spin2 = function Spin2(_ref) {
   var downTime = segments.length * downDuration;
   var spinStart = 0;
   var frames = 0;
-  var centerX = 300;
+  var centerX = 180;
   var centerY = 300;
   React.useEffect(function () {
     wheelInit();
@@ -58,7 +58,6 @@ var Spin2 = function Spin2(_ref) {
 
   var initCanvas = function initCanvas() {
     var canvas = document.getElementById('canvas');
-    console.log(navigator);
 
     if (navigator.userAgent.indexOf('MSIE') !== -1) {
       canvas = document.createElement('canvas');
@@ -160,6 +159,7 @@ var Spin2 = function Spin2(_ref) {
   };
 
   var drawWheel = function drawWheel() {
+    
     var ctx = canvasContext;
     var lastAngle = angleCurrent;
     var len = segments.length;
@@ -168,7 +168,7 @@ var Spin2 = function Spin2(_ref) {
     ctx.strokeStyle = primaryColor;
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'center';
-    ctx.font = '1em ' + fontFamily;
+    ctx.font = '0.5em ' + fontFamily;
 
     for (var i = 1; i <= len; i++) {
       var angle = PI2 * (i / len) + angleCurrent;
@@ -177,7 +177,7 @@ var Spin2 = function Spin2(_ref) {
     }
 
     ctx.beginPath();
-    ctx.arc(centerX, centerY, 50, 0, PI2, false);
+    ctx.arc(centerX, centerY, 25, 0, PI2, false);
     ctx.closePath();
     ctx.fillStyle = primaryColor;
     ctx.lineWidth = 10;
@@ -202,9 +202,9 @@ var Spin2 = function Spin2(_ref) {
     ctx.strokeStyle = contrastColor;
     ctx.fileStyle = contrastColor;
     ctx.beginPath();
-    ctx.moveTo(centerX + 20, centerY - 50);
-    ctx.lineTo(centerX - 20, centerY - 50);
-    ctx.lineTo(centerX, centerY - 70);
+    ctx.moveTo(centerX + 20, centerY - 20);
+    ctx.lineTo(centerX - 20, centerY - 20);
+    ctx.lineTo(centerX, centerY - 40);
     ctx.closePath();
     ctx.fill();
     var change = angleCurrent + Math.PI / 2;
@@ -213,7 +213,7 @@ var Spin2 = function Spin2(_ref) {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = primaryColor;
-    ctx.font = 'bold 1.5em ' + fontFamily;
+    ctx.font = 'bold 1em ' + fontFamily;
     currentSegment = segments[i];
     isStarted && ctx.fillText(currentSegment, centerX + 10, centerY + size + 50);
   };
@@ -227,8 +227,8 @@ var Spin2 = function Spin2(_ref) {
     id: "wheel"
   }, /*#__PURE__*/React__default.createElement("canvas", {
     id: "canvas",
-    width: "1000",
-    height: "800",
+    width: "400",
+    height: "480",
     style: {
       pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto'
     }

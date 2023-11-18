@@ -1,9 +1,18 @@
-body{
-    background-color:gray;
-}
+
 
 .container{
-   
-    background-color: #fff;
-    margin: 10vh auto;
+   display: flex;
+   flex-direction: column;
+   height:100vh;
+   justify-content: center;
+   background-color: #fff;
+   padding-top: 20px;
+   margin-top: -150px;
+    
+}
+
+.container h3{
+    
+    margin: 1px auto;
+    white-space: normal;
 }

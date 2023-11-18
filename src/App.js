@@ -2,16 +2,21 @@ import './App.css';
 import Spinner from './components/Spinner';
 import WheelComponent from "react-wheel-of-prizes";
 import Spin2 from './components/Spin2';
+import { useState } from 'react';
 
 function App() {
 
+  const [winner, setWinner] = useState('');
+  const [winnerFlag, setWinnerFlag] = useState(false);
+  const [tryFlag, setTryFlag]=useState(false);
+
   const segments = [
-    "won 70",
-    "won 10",
-    "won 2",
-    "won uber pass",
-    "better luck next time",
-    "won a voucher"
+    " 70% discount",
+    " 10% discount",
+    " 2% discount",
+    " uber pass",
+    "Try again",
+    "  voucher"
   ];
 
   const segColors = [
@@ -25,12 +30,22 @@ function App() {
     "#FF9000"
   ];
   const onFinished = (winner) => {
-    console.log(winner);
+    setWinnerFlag(true);
+    
+    if(winner!== "Try again"){
+      setTryFlag(false);
+      setWinner(winner);
+    } else {
+      setTryFlag(true);
+      setWinnerFlag(false);
+    }
+    
+
   };
 
 
   return (
-    <div className="App">
+    <div className='container'>
       
     <Spin2
       segments={segments}
@@ -40,10 +55,12 @@ function App() {
       contrastColor="white"
       buttonText="Spin"
       isOnlyOnce={false}
-      size={190}
+      size={150}
       upDuration={100}
       downDuration={700}
     />
+    {winnerFlag && <h3>Congratulations! You won {winner}</h3>}
+    {tryFlag && <h3>Sorry No Luck! Please try again</h3>}
     </div>
   );
 }
