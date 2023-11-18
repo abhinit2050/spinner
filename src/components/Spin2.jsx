@@ -2,7 +2,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-
+var audioFile = require('../assets/roulette.mp3')
 var Spin2 = function Spin2(_ref) {
   var segments = _ref.segments,
       segColors = _ref.segColors,
@@ -42,7 +42,7 @@ var Spin2 = function Spin2(_ref) {
   var downTime = segments.length * downDuration;
   var spinStart = 0;
   var frames = 0;
-  var centerX = 180;
+  var centerX = 250;
   var centerY = 300;
   React.useEffect(function () {
     wheelInit();
@@ -73,7 +73,8 @@ var Spin2 = function Spin2(_ref) {
 
   var spin = function spin() {
     isStarted = true;
-
+    let audio = new Audio(audioFile); // Replace with the actual path to your sound file
+    audio.play();
     if (timerHandle === 0) {
       spinStart = new Date().getTime();
       maxSpeed = Math.PI / segments.length;
