@@ -24,6 +24,7 @@ var Spin2 = function Spin2(_ref) {
       downDuration = _ref$downDuration === void 0 ? 1000 : _ref$downDuration,
       _ref$fontFamily = _ref.fontFamily,
       fontFamily = _ref$fontFamily === void 0 ? 'proxima-nova' : _ref$fontFamily;
+  
   var currentSegment = '';
   var isStarted = false;
 
